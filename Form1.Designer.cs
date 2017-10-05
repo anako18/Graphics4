@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -69,6 +70,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Polygons = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -83,6 +90,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -321,6 +331,7 @@
             // 
             // Points
             // 
+            this.Points.Enabled = false;
             this.Points.FormattingEnabled = true;
             this.Points.ItemHeight = 16;
             this.Points.Location = new System.Drawing.Point(6, 35);
@@ -372,14 +383,14 @@
             // addPointToolStripMenuItem
             // 
             this.addPointToolStripMenuItem.Name = "addPointToolStripMenuItem";
-            this.addPointToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.addPointToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
             this.addPointToolStripMenuItem.Text = "Add Point";
             this.addPointToolStripMenuItem.Click += new System.EventHandler(this.addPointToolStripMenuItem_Click);
             // 
             // addEdgeToolStripMenuItem
             // 
             this.addEdgeToolStripMenuItem.Name = "addEdgeToolStripMenuItem";
-            this.addEdgeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.addEdgeToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
             this.addEdgeToolStripMenuItem.Text = "Add Edge";
             this.addEdgeToolStripMenuItem.Click += new System.EventHandler(this.addEdgeToolStripMenuItem_Click);
             // 
@@ -388,6 +399,7 @@
             this.addPolygonToolStripMenuItem.Name = "addPolygonToolStripMenuItem";
             this.addPolygonToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.addPolygonToolStripMenuItem.Text = "Add Polygon";
+            this.addPolygonToolStripMenuItem.Click += new System.EventHandler(this.addPolygonToolStripMenuItem_Click);
             // 
             // checkToolStripMenuItem
             // 
@@ -419,6 +431,7 @@
             // 
             // Edges
             // 
+            this.Edges.Enabled = false;
             this.Edges.FormattingEnabled = true;
             this.Edges.ItemHeight = 16;
             this.Edges.Location = new System.Drawing.Point(6, 224);
@@ -452,6 +465,7 @@
             // 
             // Polygons
             // 
+            this.Polygons.Enabled = false;
             this.Polygons.FormattingEnabled = true;
             this.Polygons.ItemHeight = 16;
             this.Polygons.Location = new System.Drawing.Point(6, 423);
@@ -459,6 +473,51 @@
             this.Polygons.ScrollAlwaysVisible = true;
             this.Polygons.Size = new System.Drawing.Size(153, 148);
             this.Polygons.TabIndex = 13;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 30);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(129, 30);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem1.Text = "Delete";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.contextMenuStrip3.Name = "contextMenuStrip1";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(129, 30);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem2.Text = "Delete";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // Form1
             // 
@@ -490,6 +549,9 @@
             this.menuStrip1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,6 +600,12 @@
         private System.Windows.Forms.ToolStripMenuItem pointBelongsToAConvexPolygonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pointToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pointRelativeToTheEdgeToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

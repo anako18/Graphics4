@@ -30,6 +30,7 @@ namespace graphics4
         {
             try {
                     parent.AddNewPoint(pointName.Text, System.Convert.ToInt32(x.Value), System.Convert.ToInt32(y.Value));
+                    parent.refresh_listboxes();
                     this.Hide();
                     label1.Visible = false;
             }

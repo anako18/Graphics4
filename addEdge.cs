@@ -76,6 +76,10 @@ namespace graphics4
             string[] s1 = listBox1.SelectedItem.ToString().Split(',');
             string[] s2 = listBox2.SelectedItem.ToString().Split(',');
             string newname = s1[0].Substring(1) + s2[0].Substring(1);
+            foreach (var edg in parent.edges_list)
+                if (edg.Key.Contains(s1[0].Substring(1)) && edg.Key.Contains(s2[0].Substring(1)))
+                    return;
+
             int x1 = System.Convert.ToInt32( string.Join("", s1[1].ToCharArray().Where(Char.IsDigit)));
             int x2 = System.Convert.ToInt32(string.Join("", s2[1].ToCharArray().Where(Char.IsDigit)));
             int y1 = System.Convert.ToInt32(string.Join("", s1[2].ToCharArray().Where(Char.IsDigit)));
