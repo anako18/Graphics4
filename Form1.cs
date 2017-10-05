@@ -19,6 +19,8 @@ namespace graphics4
 
         addPoint addPointForm;
 
+        addEdge addEdgeForm;
+
         //Координаты "центра"
         int OX;
         int OY;
@@ -27,13 +29,17 @@ namespace graphics4
         {
             InitializeComponent();
             addPointForm = new addPoint(this);
+            addEdgeForm = new addEdge(this,addPointForm);
         }
 
-        Dictionary<string, Point> points_list;
+        public Dictionary<string, Point> points_list;
+        public Dictionary<string, Tuple<Point, Point>> edges_list;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            points_list = new Dictionary<string, Point>(); 
+            points_list = new Dictionary<string, Point>();
+            edges_list = new Dictionary<string, Tuple<Point, Point>>();
+
             Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             pictureBox1.Image = bmp;
             g = Graphics.FromImage(bmp);
@@ -64,16 +70,27 @@ namespace graphics4
             points_list.Add(name, new Point(x, y));
             Points.Items.Add(points_list.Last());
             Draw_point();
+            ((addEdgeForm.Controls["panel1"] as Panel).Controls["listBox1"] as ListBox).Items.Add(points_list.Last());
+            ((addEdgeForm.Controls["panel2"] as Panel).Controls["listBox2"] as ListBox).Items.Add(points_list.Last());
         }
 
-        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        public ListBox getPoints()
         {
-
+            return Points;
         }
+
+        public void AddNewEdge(string name, Point A, Point B)
+        {
+            edges_list.Add(name,Tuple.Create(A, B));
+            Edges.Items.Add(edges_list.Last());
+            g.DrawLine(pen, A.X + OX, A.Y + OY, B.X + OX, B.Y + OY);
+            pictureBox1.Refresh();   
+        }
+
 
         private void addPointToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addPointForm.Show();
+            addPointForm.ShowDialog();
         }
 
         private void Draw_point()
@@ -86,6 +103,9 @@ namespace graphics4
             
         }
 
-
+        private void addEdgeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addEdgeForm.ShowDialog();
+        }
     }
 }

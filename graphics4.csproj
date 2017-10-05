@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addEdge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addEdge.Designer.cs">
+      <DependentUpon>addEdge.cs</DependentUpon>
+    </Compile>
     <Compile Include="addPoint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="addEdge.resx">
+      <DependentUpon>addEdge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addPoint.resx">
       <DependentUpon>addPoint.cs</DependentUpon>
     </EmbeddedResource>

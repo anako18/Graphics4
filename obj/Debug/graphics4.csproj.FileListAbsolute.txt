@@ -8,3 +8,4 @@ c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\gr
 c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.pdb
 c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.addPoint.resources
 c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.Form1.resources
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.addEdge.resources
