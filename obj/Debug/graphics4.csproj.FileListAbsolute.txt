@@ -1,0 +1,10 @@
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\bin\Debug\graphics4.exe.config
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\bin\Debug\graphics4.exe
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\bin\Debug\graphics4.pdb
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.csprojResolveAssemblyReference.cache
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.Properties.Resources.resources
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.csproj.GenerateResource.Cache
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.exe
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.pdb
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.addPoint.resources
+c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.Form1.resources
