@@ -260,6 +260,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Rotate";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // numericUpDown1
             // 
@@ -339,6 +340,7 @@
             this.Points.ScrollAlwaysVisible = true;
             this.Points.Size = new System.Drawing.Size(153, 148);
             this.Points.TabIndex = 10;
+            this.Points.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Points_MouseDown);
             // 
             // label8
             // 
@@ -397,7 +399,7 @@
             // addPolygonToolStripMenuItem
             // 
             this.addPolygonToolStripMenuItem.Name = "addPolygonToolStripMenuItem";
-            this.addPolygonToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.addPolygonToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
             this.addPolygonToolStripMenuItem.Text = "Add Polygon";
             this.addPolygonToolStripMenuItem.Click += new System.EventHandler(this.addPolygonToolStripMenuItem_Click);
             // 
@@ -439,6 +441,7 @@
             this.Edges.ScrollAlwaysVisible = true;
             this.Edges.Size = new System.Drawing.Size(153, 148);
             this.Edges.TabIndex = 11;
+            this.Edges.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Edges_MouseDown);
             // 
             // label9
             // 
@@ -473,6 +476,7 @@
             this.Polygons.ScrollAlwaysVisible = true;
             this.Polygons.Size = new System.Drawing.Size(153, 148);
             this.Polygons.TabIndex = 13;
+            this.Polygons.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Polygons_MouseDown);
             // 
             // contextMenuStrip1
             // 
@@ -485,7 +489,7 @@
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -500,7 +504,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(128, 26);
             this.toolStripMenuItem1.Text = "Delete";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -515,7 +519,7 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(128, 26);
             this.toolStripMenuItem2.Text = "Delete";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 

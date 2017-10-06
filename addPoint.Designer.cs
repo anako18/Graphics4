@@ -43,6 +43,16 @@
             // x
             // 
             this.x.Location = new System.Drawing.Point(124, 62);
+            this.x.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.x.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
             this.x.Name = "x";
             this.x.Size = new System.Drawing.Size(60, 22);
             this.x.TabIndex = 0;
@@ -68,6 +78,16 @@
             // y
             // 
             this.y.Location = new System.Drawing.Point(314, 63);
+            this.y.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.y.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
             this.y.Name = "y";
             this.y.Size = new System.Drawing.Size(60, 22);
             this.y.TabIndex = 4;

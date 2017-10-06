@@ -93,11 +93,13 @@ namespace graphics4
             }
             parent.AddNewEdge((newname[list_verts.Count - 1].ToString() + newname[0].ToString()), new Point(list_verts[list_verts.Count - 1].X, list_verts[list_verts.Count - 1].Y),
                                                     new Point(list_verts[0].X, list_verts[0].Y));
+
             
             listBox1.Items.AddRange(listBox2.Items);
             listBox2.Items.Clear();
             parent.polygon_list.Add(newname, list_verts);
             parent.addPolygon();
+            parent.Redraw();
         }
     }
 }

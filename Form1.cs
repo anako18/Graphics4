@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Drawing.Drawing2D;
+using MathNet.Numerics.LinearAlgebra.Double;
+
 
 namespace graphics4
 {
@@ -14,8 +18,8 @@ namespace graphics4
     public partial class Form1 : Form
     {
         Graphics g;
-
-        Pen pen = new Pen(Color.Black);
+        
+        System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.Black);
 
         addPoint addPointForm;
         addEdge addEdgeForm;
@@ -111,7 +115,7 @@ namespace graphics4
         private void Draw_point()
         {
             Font drawFont = new Font("Arial", 10);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            SolidBrush drawBrush = new SolidBrush(System.Drawing.Color.Black);
             g.DrawString(points_list.Last().Key,drawFont,drawBrush, points_list.Last().Value.X + OX, points_list.Last().Value.Y + OY);
             g.DrawEllipse(pen, new Rectangle(points_list.Last().Value.X + OX, points_list.Last().Value.Y + OY, 1, 1));
             pictureBox1.Refresh();  
@@ -123,12 +127,12 @@ namespace graphics4
             addEdgeForm.ShowDialog();
         }
 
-        private void Redraw()
+        public void Redraw()
         {
-            g.Clear(Color.White);
+            g.Clear(System.Drawing.Color.White);
 
             //Draw OX and OY
-            Pen penLightGrey = new Pen(Color.LightGray);
+            System.Drawing.Pen penLightGrey = new System.Drawing.Pen(System.Drawing.Color.LightGray);
             int h = pictureBox1.Height;
             int w = pictureBox1.Width;
             //OX
@@ -143,7 +147,7 @@ namespace graphics4
 
 
             Font drawFont = new Font("Arial", 10);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            SolidBrush drawBrush = new SolidBrush(System.Drawing.Color.Black);
             //Draw Points
             foreach (var pnt in points_list)
             {
@@ -226,6 +230,122 @@ namespace graphics4
         {
             Polygons.Items.Add(polygon_list.Last());
             Polygons.Enabled = true;
+            Redraw();
+        }
+
+        private void Points_MouseDown(object sender, MouseEventArgs e)
+        {
+            Edges.ClearSelected();
+            Polygons.ClearSelected();
+        }
+
+        private void Edges_MouseDown(object sender, MouseEventArgs e)
+        {
+            Points.ClearSelected();
+            Polygons.ClearSelected();
+        }
+
+        private void Polygons_MouseDown(object sender, MouseEventArgs e)
+        {
+            Points.ClearSelected();
+            Edges.ClearSelected();
+        }
+
+
+        public double[,] MultiplyMatrix(double[,] A, double[,] B)
+        {
+            int rA = A.GetLength(0);
+            int cA = A.GetLength(1);
+            int rB = B.GetLength(0);
+            int cB = B.GetLength(1);
+            double temp = 0;
+            double[,] kHasil = new double[rA, cB];
+            if (cA != rB)
+            {
+                Console.WriteLine("matrik can't be multiplied !!");
+                return kHasil;
+            }
+            else
+            {
+                for (int i = 0; i < rA; i++)
+                {
+                    for (int j = 0; j < cB; j++)
+                    {
+                        temp = 0;
+                        for (int k = 0; k < cA; k++)
+                        {
+                            temp += A[i, k] * B[k, j];
+                        }
+                        kHasil[i, j] = temp;
+                    }
+                }
+                return kHasil;
+            }
+        }
+
+        void connect_all_the_points(List<Point> lp)
+        {
+            g.Clear(System.Drawing.Color.White);
+            System.Drawing.Pen penLightGrey = new System.Drawing.Pen(System.Drawing.Color.LightGray);
+            int h = pictureBox1.Height;
+            int w = pictureBox1.Width;
+            //OX
+            g.DrawLine(penLightGrey, 0, h / 2, w, h / 2);
+            g.DrawLine(penLightGrey, w - 10, (h / 2) - 2, w, h / 2);
+            g.DrawLine(penLightGrey, w - 10, (h / 2) + 2, w, h / 2);
+
+            //OY
+            g.DrawLine(penLightGrey, w / 2, 0, w / 2, h);
+            g.DrawLine(penLightGrey, (w / 2) - 2, 10, w / 2, 0);
+            g.DrawLine(penLightGrey, (w / 2) + 2, 10, w / 2, 0);
+
+
+            for (int i = 0; i < lp.Count - 1; i++)
+            {
+                g.DrawLine(pen, lp[i].X + OX, lp[i].Y + OY, lp[i+1].X + OX, lp[i+1].Y + OY);
+            }
+            g.DrawLine(pen, lp[lp.Count - 1].X + OX, lp[lp.Count - 1].Y + OY, lp[0].X + OX, lp[0].Y + OY);
+            pictureBox1.Refresh();
+        }
+
+
+        //Rotation
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double a = System.Convert.ToDouble(numericUpDown2.Value);
+            double b = System.Convert.ToDouble(numericUpDown3.Value);
+            double angle = Math.PI * System.Convert.ToDouble(numericUpDown1.Value) / 180.0;
+
+            var ToAB = new double[,] { { 1.0, 0, 0 }, { 0, 1.0, 0 }, { -a, -b, 1.0 } };
+
+            var rotation_matrix = new double[,] {
+                { Math.Cos(angle), Math.Sin(angle), 0},
+                {(-1)*Math.Sin(angle), Math.Cos(angle),0},
+                {0,0,1 }
+            };
+
+            var FromAB = new double [,] { { 1.0, 0, 0 }, { 0, 1.0, 0 }, { a, b, 1.0 } };
+
+            double[,] res = MultiplyMatrix(ToAB, rotation_matrix);
+            res = MultiplyMatrix(res, FromAB);
+
+            List<Point> newPoints = new List<Point>();
+
+            foreach (Point p in polygon_list.First().Value)
+            {
+                double px = p.X;
+                double py = p.Y;
+                double[,] ff = { { px, py, 1 } };
+                double[,] result_arr = MultiplyMatrix(ff, res);
+                newPoints.Add(new Point(System.Convert.ToInt32(result_arr.GetValue(0,0)), System.Convert.ToInt32(result_arr.GetValue(0,1))));
+                
+            }
+
+            polygon_list.First().Value.Clear();
+            polygon_list.First().Value.AddRange(newPoints);
+            connect_all_the_points(newPoints);
+            
+            
         }
     }
 }
