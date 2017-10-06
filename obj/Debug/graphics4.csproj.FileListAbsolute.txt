@@ -10,3 +10,15 @@ c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\gr
 c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.Form1.resources
 c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.addEdge.resources
 c:\users\настя\documents\visual studio 2015\Projects\graphics4\obj\Debug\graphics4.addPolygon.resources
+C:\Users\Sasha\Documents\GitHub\Graphics4\bin\Debug\graphics4.exe.config
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.exe
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.pdb
+C:\Users\Sasha\Documents\GitHub\Graphics4\bin\Debug\graphics4.exe
+C:\Users\Sasha\Documents\GitHub\Graphics4\bin\Debug\graphics4.pdb
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.csprojResolveAssemblyReference.cache
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.addEdge.resources
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.addPoint.resources
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.addPolygon.resources
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.Form1.resources
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.Properties.Resources.resources
+C:\Users\Sasha\Documents\GitHub\Graphics4\obj\Debug\graphics4.csproj.GenerateResource.Cache

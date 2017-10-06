@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace graphics4
 {
@@ -80,8 +81,10 @@ namespace graphics4
             {
                 string[] s =x.ToString().Split(',');
                 newname += s[0].Substring(1);
-                x1 = System.Convert.ToInt32(string.Join("", s[1].ToCharArray().Where(Char.IsDigit)));
-                y1 = System.Convert.ToInt32(string.Join("", s[2].ToCharArray().Where(Char.IsDigit)));
+                string r1 = Regex.Match(s[1], @"[+-]?\d+(\.\d+)?").Groups[0].ToString();
+                string r2 = Regex.Match(s[2], @"[+-]?\d+(\.\d+)?").Groups[0].ToString();
+                x1 = System.Convert.ToInt32(r1);
+                y1 = System.Convert.ToInt32(r2);
                 list_verts.Add(new Point(x1, y1));
             }
             
@@ -100,6 +103,7 @@ namespace graphics4
             parent.polygon_list.Add(newname, list_verts);
             parent.addPolygon();
             parent.Redraw();
+            Close();
         }
     }
 }
