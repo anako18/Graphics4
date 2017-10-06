@@ -14,15 +14,19 @@ namespace graphics4
     {
         private Form1 parent;
 
-        public addPoint()
+        public addPoint(int w, int h)
         {
             InitializeComponent();
         }
 
-        public addPoint(Form1 frm1)
+        public addPoint(Form1 frm1, int w, int h)
         {
             InitializeComponent();
             parent = frm1;
+            x.Minimum = -w / 2;
+            y.Minimum = -h / 2;
+            x.Maximum = w / 2;
+            y.Maximum = h / 2;
         }
 
 

@@ -33,8 +33,8 @@ namespace graphics4
         public Form1()
         {
             InitializeComponent();
-            addPointForm = new addPoint(this);
-            addEdgeForm = new addEdge(this,addPointForm);
+            addPointForm = new addPoint(this, pictureBox1.Width, pictureBox1.Height);
+            addEdgeForm = new addEdge(this, addPointForm);
             addPolygonForm = new addPolygon(this, addPointForm);
 
             Points.ContextMenuStrip = contextMenuStrip1;
@@ -80,14 +80,24 @@ namespace graphics4
             return Points;
         }
 
-        
+        public static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
+
+
         public void AddNewEdge(string name, Point A, Point B)
         {
-            edges_list.Add(name,Tuple.Create(A, B));
-            Edges.Items.Add(edges_list.Last());
-            g.DrawLine(pen, A.X + OX, A.Y + OY, B.X + OX, B.Y + OY);
-            pictureBox1.Refresh();
-            Edges.Enabled = true;
+            if (!edges_list.ContainsKey(name) && !edges_list.ContainsKey(Reverse(name)))
+            {
+                edges_list.Add(name, Tuple.Create(A, B));
+                Edges.Items.Add(edges_list.Last());
+                g.DrawLine(pen, A.X + OX, A.Y + OY, B.X + OX, B.Y + OY);
+                pictureBox1.Refresh();
+                Edges.Enabled = true;
+            }
         }
 
         public void refresh_listboxes()
@@ -116,8 +126,8 @@ namespace graphics4
         {
             Font drawFont = new Font("Arial", 10);
             SolidBrush drawBrush = new SolidBrush(System.Drawing.Color.Black);
-            g.DrawString(points_list.Last().Key,drawFont,drawBrush, points_list.Last().Value.X + OX, points_list.Last().Value.Y + OY);
-            g.DrawEllipse(pen, new Rectangle(points_list.Last().Value.X + OX, points_list.Last().Value.Y + OY, 1, 1));
+            g.DrawString(points_list.Last().Key,drawFont,drawBrush, points_list.Last().Value.X + OX, -points_list.Last().Value.Y + OY);
+            g.DrawEllipse(pen, new Rectangle(points_list.Last().Value.X + OX, -points_list.Last().Value.Y + OY, 1, 1));
             pictureBox1.Refresh();  
         }
 
@@ -151,13 +161,13 @@ namespace graphics4
             //Draw Points
             foreach (var pnt in points_list)
             {
-                g.DrawEllipse(pen, new Rectangle(pnt.Value.X + OX, pnt.Value.Y + OY, 1, 1));
-                g.DrawString(pnt.Key, drawFont, drawBrush, pnt.Value.X + OX, pnt.Value.Y + OY);
+                g.DrawEllipse(pen, new Rectangle(pnt.Value.X + OX, -pnt.Value.Y + OY, 1, 1));
+                g.DrawString(pnt.Key, drawFont, drawBrush, pnt.Value.X + OX, -pnt.Value.Y + OY);
             }
             //Draw Edges
             foreach (var edg in edges_list)
             {
-                g.DrawLine(pen, edg.Value.Item1.X + OX, edg.Value.Item1.Y + OY, edg.Value.Item2.X + OX, edg.Value.Item2.Y + OY);
+                g.DrawLine(pen, edg.Value.Item1.X + OX, -edg.Value.Item1.Y + OY, edg.Value.Item2.X + OX, -edg.Value.Item2.Y + OY);
             }
             this.Refresh();
         }
@@ -262,7 +272,7 @@ namespace graphics4
             double[,] kHasil = new double[rA, cB];
             if (cA != rB)
             {
-                Console.WriteLine("matrik can't be multiplied !!");
+                Console.WriteLine("matrix can't be multiplied !!");
                 return kHasil;
             }
             else
@@ -312,6 +322,7 @@ namespace graphics4
         //Rotation
         private void button1_Click(object sender, EventArgs e)
         {
+            if (polygon_list.Count == 0) return;
             double a = System.Convert.ToDouble(numericUpDown2.Value);
             double b = System.Convert.ToDouble(numericUpDown3.Value);
             double angle = Math.PI * System.Convert.ToDouble(numericUpDown1.Value) / 180.0;
